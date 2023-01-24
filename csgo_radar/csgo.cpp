@@ -21,7 +21,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path
 		if (utils::is_process_terminating(csgo::process)) {
 			csgo::process = NULL;
 			csgo::client = NULL;
-			utils::print("unloaded i think :p \n");
+			utils::print(_("unloaded i think :p \n"));
 
 			break;
 		}

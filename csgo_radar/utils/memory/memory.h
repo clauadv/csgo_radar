@@ -11,7 +11,7 @@ namespace memory {
 		if (MmIsAddressValid(reinterpret_cast<void*>(address))) {
 			ret = *reinterpret_cast<T*>(address);
 		} else {
-			utils::print("couldn't read at 0x%p \n", address);
+			utils::print(_("couldn't read at 0x%p \n"), address);
 
 			T free{};
 			RtlZeroMemory(&free, sizeof(T));
@@ -30,7 +30,7 @@ namespace memory {
 		if (MmIsAddressValid(reinterpret_cast<void*>(address)))
 			*reinterpret_cast<T*>(address) = value;
 		else {
-			utils::print("couldn't write at 0x%p \n", address);
+			utils::print(_("couldn't write at 0x%p \n"), address);
 		}
 
 		KeUnstackDetachProcess(&apc);
