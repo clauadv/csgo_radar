@@ -67,12 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="csgo.cpp" />
-    <ClCompile Include="utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="csgo\csgo.h" />
+    <ClInclude Include="csgo\entity.h" />
     <ClInclude Include="includes.h" />
-    <ClInclude Include="nt\api.h" />
-    <ClInclude Include="nt\structs.h" />
+    <ClInclude Include="utils\kernel\kernel.h" />
+    <ClInclude Include="utils\memory\memory.h" />
     <ClInclude Include="utils\libraries\sk_crypter.h" />
     <ClInclude Include="utils\utils.h" />
   </ItemGroup>

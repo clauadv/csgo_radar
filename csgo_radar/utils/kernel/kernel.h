@@ -1,40 +1,14 @@
 #pragma once
 
-typedef enum _SYSTEM_INFORMATION_CLASS
-{
-	SystemBasicInformation,
-	SystemProcessorInformation,
-	SystemPerformanceInformation,
-	SystemTimeOfDayInformation,
-	SystemPathInformation,
-	SystemProcessInformation,
-	SystemCallCountInformation,
-	SystemDeviceInformation,
-	SystemProcessorPerformanceInformation,
-	SystemFlagsInformation,
-	SystemCallTimeInformation,
-	SystemModuleInformation,
-} SYSTEM_INFORMATION_CLASS, * PSYSTEM_INFORMATION_CLASS;
+namespace kernel_offsets {
+	// win11_22h2
 
-typedef struct _RTL_PROCESS_MODULE_INFORMATION
-{
-	HANDLE Section;
-	PVOID MappedBase;
-	PVOID ImageBase;
-	ULONG ImageSize;
-	ULONG Flags;
-	USHORT LoadOrderIndex;
-	USHORT InitOrderIndex;
-	USHORT LoadCount;
-	USHORT OffsetToFileName;
-	UCHAR FullPathName[256];
-} RTL_PROCESS_MODULE_INFORMATION, * PRTL_PROCESS_MODULE_INFORMATION;
+	constexpr unsigned int image_file_name = 0x5a8;
+	constexpr unsigned int active_threads = 0x5f0;
+	constexpr unsigned int active_process_links = 0x448;
+}
 
-typedef struct _RTL_PROCESS_MODULES
-{
-	ULONG NumberOfModules;
-	RTL_PROCESS_MODULE_INFORMATION Modules[1];
-} RTL_PROCESS_MODULES, * PRTL_PROCESS_MODULES;
+extern "C" __declspec(dllimport) PVOID PsGetProcessWow64Process(PEPROCESS);
 
 typedef struct _PEB_LDR_DATA32
 {
