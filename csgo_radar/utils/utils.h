@@ -91,7 +91,7 @@ namespace utils {
         {
             const auto p_entry = CONTAINING_RECORD(plist_entry, LDR_DATA_TABLE_ENTRY32, InLoadOrderLinks);
 
-            if (wcscmp(reinterpret_cast<wchar_t*>(p_entry->BaseDllName.Buffer), module_name) == 0) {
+            if (wcscmp(reinterpret_cast<wchar_t*>(p_entry->BaseDllName.Buffer), module_name) == NULL) {
                 unsigned long long module_base = p_entry->DllBase;
                 KeUnstackDetachProcess(&apc);
 
@@ -100,6 +100,6 @@ namespace utils {
         }
 
         KeUnstackDetachProcess(&apc);
-        return 0;
+        return NULL;
     }
 }
